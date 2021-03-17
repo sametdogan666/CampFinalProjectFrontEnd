@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
-import { CategoryService } from '../services/category.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -15,12 +15,12 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
   }
+
   getCategories() {
     this.categoryService.getCategories().subscribe((response) => {
       this.categories = response.data;
     });
   }
-
   setCurrentCategory(category: Category) {
     this.currentCategory = category;
   }
@@ -32,6 +32,7 @@ export class CategoryComponent implements OnInit {
       return 'list-group-item';
     }
   }
+
   getAllCategoryClass() {
     if (!this.currentCategory) {
       return 'list-group-item active';
